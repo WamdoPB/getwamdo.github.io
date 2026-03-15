@@ -13,6 +13,15 @@
     --wamdo-bold-bright: #4da3ff;
     --wamdo-bold-deep: #1a73e8;
     --glass-white: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3), rgba(241, 241, 241, 0.5));
+
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 32px;
+    --space-lg: 64px;
+    --space-xl: 96px;
+
+    --container-width: 1250px;
+    --container-padding: 24px;
 }
 
 
@@ -23,7 +32,7 @@ html, body {
     margin: 0;
     min-height: 100vh;
     /*background: radial-gradient(circle at 50% -20%, #89c8ff 0%, #6cabff 60%, #578dd3 100%);*/
-    background: radial-gradient(circle at 50% -20%, #7ec2ff 20%, #69aaff 60%, #7ec2ff 70%, #69aaff 80%, #4284da 100%);
+    background: radial-gradient(circle at 50% -25%,#8ed0ff 0%,#6cabff 40%,#4284da 100%), radial-gradient(circle at 80% 120%, rgba(255,255,255,0.15), transparent 60%);
     color: white;
     /*background-attachment: fixed;*/
 }
@@ -34,12 +43,38 @@ h1, h2, h3, h4, h5 {
     letter-spacing: -0.5px;
 }
 
+h2 {
+    font-size: 1.8rem;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
 p, a {
     font-family: 'Source Sans 3', 'Montserrat';
 }
 
 a {
     color: white;
+}
+
+h1 {
+    font-size: clamp(2.3rem, 4vw, 3rem);
+    text-align: center;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.35rem;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 ul li:hover {
@@ -95,49 +130,176 @@ nav {
     text-decoration-color: var(--wamdo-bold-bright);
 }
 
-header, section {
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    font-size: larger;
-    /*padding-top: 100px;*/
+section {
+    padding-block: var(--space-xl);
 }
+
+section h2 {
+    margin-bottom: var(--space-sm);
+    letter-spacing: -0.5px;
+}
+
+header {
+    min-height: 100vh;
+
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    padding-inline: var(--container-padding);
+    gap: var(--space-md);
+}
+
+header p {
+    opacity: 0.9;
+    text-align: center;
+    font-size: 1.35rem;
+    max-width: 600px;
+    font-weight: 500;
+}
+
+.float-icon {
+    position: absolute;
+    width: 70px;
+    opacity: 0.85;
+
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero-icons {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+header h1,
+header p {
+    position: relative;
+    z-index: 1;
+}
+
+.icon1 {
+    top: 20%;
+    left: 15%;
+    transform: rotate(-12deg);
+}
+
+.icon2 {
+    top: 65%;
+    left: 20%;
+    transform: rotate(8deg);
+}
+
+.icon3 {
+    top: 30%;
+    right: 18%;
+    transform: rotate(-6deg);
+}
+
+.icon4 {
+    top: 70%;
+    right: 22%;
+    transform: rotate(10deg);
+}
+
+.icon5 {
+    top: 20%;
+    left: 60%;
+    transform: rotate(-4deg);
+}
+
+.icon6 {
+    top: 80%;
+    left: 50%;
+    transform: rotate(-7deg);
+}
+
+.icon7 {
+    top: 85%;
+    left: 30%;
+    transform: rotate(4deg);
+}
+
+.icon8 {
+    top: 50%;
+    left: 90%;
+    transform: rotate(-2deg);
+}
+
+@keyframes float {
+
+    0% {
+        transform: translateY(0) rotate(var(--rot, 0deg));
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(var(--rot, 0deg));
+    }
+
+    100% {
+        transform: translateY(0) rotate(var(--rot, 0deg));
+    }
+
+}
+
+
+
+
+
+
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
 
-    width: min(1300px, 90%);
-    margin: 0 auto;
+    width: 100%;
+}
+
+.container {
+    width: min(var(--container-width), 100%);
+    margin-inline: auto;
+    padding-inline: var(--container-padding);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container > * + * {
+    margin-top: var(--space-md);
 }
 
 .card {
-    background: white;
+    background: rgba(255,255,255,0.95);
     color: black;
 
     border-radius: 35px;
     padding: 2rem;
 
-    border: 1px solid rgba(0,0,0,0.05);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.6);
+    backdrop-filter: blur(4px);
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.6);
 
     display: flex;
     flex-direction: column;
-
     gap: 15px;
 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-
     min-height: 260px;
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
 .card img {
@@ -147,6 +309,11 @@ header, section {
 
 .card a {
     margin-top: auto;
+}
+
+.card p {
+    opacity: 0.85;
+    max-width: 500px;
 }
 
 .full-card {
@@ -166,7 +333,7 @@ header, section {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    max-width: 500px;
+    max-width: 80%;
     height: 100%;
 }
 
@@ -208,7 +375,7 @@ header, section {
     box-shadow: 0 8px 13px rgba(0,0,0,0.20);
 }
 
-.btn-light {
+.btn-light, .btn-light-white {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -216,27 +383,45 @@ header, section {
     padding: 10px 22px;
 
     border-radius: 999px;
-    width: 20%;
 
     font-weight: 600;
     font-size: 15px;
 
+    transition: all 0.25s ease;
+}
+
+.btn-light {
     border: 2px solid var(--wamdo-bold-bright);
 
     color: var(--wamdo-bold-bright);
     background: transparent;
-
-    transition: all 0.25s ease;
 }
 
-.btn-light:hover {
+.btn-light-white {
+    border: 2px solid white;
+
+    color: white;
+    background: transparent;
+}
+
+.btn-light:hover, .btn-light-white:hover {
     background: linear-gradient(
         135deg,
         var(--wamdo-bold-bright),
         var(--wamdo-bold-deep)
     );
     color: white;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     transform: translateY(-2px);
+}
+
+.link-bold {
+    color: var(--wamdo-bold-deep);
+    font-weight: bolder;
+    transform: scale(1.1);
+
+    display: inline-flex;
+    padding: 10px 22px;
 }
 
 .logo {
@@ -245,7 +430,7 @@ header, section {
 }
 
 .smalllogo {
-    height: 40px;
+    height: 50px;
 }
 
 .image {
