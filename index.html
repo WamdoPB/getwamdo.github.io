@@ -17,7 +17,7 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#products">Products</a></li>
-                <li><a href="#contacts">Contact</a></li>
+                <li><a href="#contact">Contact</a></li>
                 <li><a href="donate.html">Donate</a></li>
             </ul>
         </div>
@@ -27,19 +27,21 @@
     <header id="home">
 
         <div class="hero-icons">
-            <img src="icons/keyboard.png" class="float-icon icon1">
-            <img src="icons/clock.png" class="float-icon icon2">
-            <img src="icons/notes.png" class="float-icon icon3">
-            <img src="icons/files.png" class="float-icon icon4">
-            <img src="icons/calendar.png" class="float-icon icon5">
-            <img src="icons/voice.png" class="float-icon icon6">
-            <img src="icons/contact.png" class="float-icon icon7">
-            <img src="icons/gallery.png" class="float-icon icon8">
+            <img src="icons/keyboard.png" class="float-icon icon1" alt="keyboard">
+            <img src="icons/clock.png" class="float-icon icon2" alt="clock">
+            <img src="icons/notes.png" class="float-icon icon3" alt="notes">
+            <img src="icons/files.png" class="float-icon icon4" alt="files">
+            <img src="icons/calendar.png" class="float-icon icon5" alt="calendar">
+            <img src="icons/voice.png" class="float-icon icon6" alt="voice">
+            <img src="icons/contact.png" class="float-icon icon7" alt="contact">
+            <img src="icons/gallery.png" class="float-icon icon8" alt="gallery">
         </div>
 
-        <h1><!--<img style="height: 50px; transform: translateY(10px);" src="img/w-borderless-large.png" alt=""> Just an experiment, not needed.-->Welcome to Wamdo</h1>
-        <p style="padding-top: 15px;">Open, transparent software and hardware designed to respect users, not exploit them.</p>
-        <a href="#products" class="btn-light-white">Explore our products</a>
+        <div class="hero-content">
+            <h1><!--<img style="height: 50px; transform: translateY(10px);" src="img/w-borderless-large.png" alt=""> Just an experiment, not needed.-->Welcome to Wamdo</h1>
+            <p style="padding-top: 15px;">Open, transparent software and hardware designed to respect users, not exploit them.</p>
+            <a href="#products" class="btn-light-white">Explore our products</a>
+        </div>
     </header>
 
     <section id="about">
@@ -59,7 +61,7 @@
         </div>
     </section>
 
-    <section id="products" style="padding-top: 100px;">
+    <section id="products">
         <div class="container">
             <h2>Products</h2>
             <div class="grid">
@@ -79,7 +81,7 @@
                 <div class="card">
                     <h3>Wamdo Watch 1</h3>
                     <p>Wamdo Watch 1 is a fast, reliable, seamless, and trustworthy pick running the latest WandOS Mini 1 operating system.</p>
-                    <img style="height:100px;" src="img/OS.png" alt="">
+                    <img class="product-image" src="img/OS.png" alt="">
                     <a class="btn-bold" href="watch.html">Discover</a>
                 </div>
                 <div class="card full-card">
@@ -102,26 +104,42 @@
             </div>
         </div>
     </section>
-    
-    <section id="contacts">
-        <div class="container">
-            <h2>Contact us</h2>
-            <div class="dark-container">
-                <div class="grid-large">
-                    <a href="https://www.youtube.com/@GetWamdo">YouTube</a>
-                    <a href="https://www.tiktok.com/@getwamdo">TikTok</a>
-                    <a href="https://www.instagram.com/getwamdo">Instagram</a>
-                    <a href="https://bsky.app/profile/getwamdo.bsky.social">BlueSky</a>
-                    <a href="https://www.reddit.com/user/GetWamdo">Reddit</a>
-                    <a href="https://github.com/WamdoPB">Github</a>
-                </div>
-            </div>
+
+    <section id="contact">
+        <h2>Contact us</h2>
+
+        <p class="contact-text">
+            Stay connected or reach out through our platforms.
+        </p>
+
+        <div class="contact-links">
+            <a href="https://www.youtube.com/@GetWamdo">YouTube</a>
+            <a href="https://www.tiktok.com/@getwamdo">TikTok</a>
+            <a href="https://www.instagram.com/getwamdo">Instagram</a>
+            <a href="https://bsky.app/profile/getwamdo.bsky.social">BlueSky</a>
+            <a href="https://www.reddit.com/user/GetWamdo">Reddit</a>
+            <a href="https://github.com/WamdoPB">Github</a>
         </div>
     </section>
 
     <footer>
-        <img src="img/w-solid-gray.png" alt="Wamdo" class="smalllogo">
+        <img src="img/w-solid-blue.png" alt="Wamdo" class="smalllogo">
         <p>Copyright &copy Wamdo 2026 - All Rights Reserved</p>
     </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.classList.add('fade-in');
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>

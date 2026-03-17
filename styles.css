@@ -4,7 +4,7 @@
 * {
     text-decoration: none;
     margin: 0;
-    font-family:'Source Sans 3', 'Montserrat';
+    font-family:'Source Sans 3', 'Montserrat', system-ui, sans-serif;
 }
 
 :root {
@@ -32,9 +32,15 @@ html, body {
     margin: 0;
     min-height: 100vh;
     /*background: radial-gradient(circle at 50% -20%, #89c8ff 0%, #6cabff 60%, #578dd3 100%);*/
-    background: radial-gradient(circle at 50% -25%,#8ed0ff 0%,#6cabff 40%,#4284da 100%), radial-gradient(circle at 80% 120%, rgba(255,255,255,0.15), transparent 60%);
+    background: radial-gradient(
+        circle at 50% -20%,
+        #8ed0ff 0%,
+        #6cabff 50%,
+        #4284da 100%
+    );
     color: white;
     /*background-attachment: fixed;*/
+    scroll-behavior: smooth;
 }
 
 h1, h2, h3, h4, h5 {
@@ -77,17 +83,13 @@ p {
     line-height: 1.6;
 }
 
-ul li:hover {
-    text-decoration: underline;
-}
-
 nav {
     position: fixed;
     top: 15px;
     left: 50%;
     transform: translateX(-50%);
 
-    width: 700px;
+    width: min(700px, 95%);
     height: 60px;
 
     background: white;
@@ -130,6 +132,10 @@ nav {
     text-decoration-color: var(--wamdo-bold-bright);
 }
 
+nav ul li:hover {
+    text-decoration: underline;
+}
+
 section {
     padding-block: var(--space-xl);
 }
@@ -161,6 +167,12 @@ header p {
     font-weight: 500;
 }
 
+.hero-content {
+    max-width: 700px;
+    text-align: center;
+    z-index: 1;
+}
+
 .float-icon {
     position: absolute;
     width: 70px;
@@ -184,63 +196,63 @@ header p {
 .icon1 {
     top: 20%;
     left: 15%;
-    transform: rotate(-12deg);
+    --rot: -12deg;
 }
 
 .icon2 {
     top: 65%;
     left: 20%;
-    transform: rotate(8deg);
+    --rot: 8deg;
 }
 
 .icon3 {
     top: 30%;
     right: 18%;
-    transform: rotate(-6deg);
+    --rot: -6deg;
 }
 
 .icon4 {
     top: 70%;
     right: 22%;
-    transform: rotate(10deg);
+    --rot: 10deg;
 }
 
 .icon5 {
     top: 20%;
     left: 60%;
-    transform: rotate(-4deg);
+    --rot: -4deg;
 }
 
 .icon6 {
     top: 80%;
     left: 50%;
-    transform: rotate(-7deg);
+    --rot: -7deg;
 }
 
 .icon7 {
     top: 85%;
     left: 30%;
-    transform: rotate(4deg);
+    --rot: 4deg;
 }
 
 .icon8 {
     top: 50%;
     left: 90%;
-    transform: rotate(-2deg);
+    --rot: -2deg;
 }
 
 @keyframes float {
 
     0% {
-        transform: translateY(0) rotate(var(--rot, 0deg));
+        transform: translateY(0) rotate(var(--rot));
     }
 
     50% {
-        transform: translateY(-12px) rotate(var(--rot, 0deg));
+        transform: translateY(-12px) rotate(var(--rot));
     }
 
     100% {
-        transform: translateY(0) rotate(var(--rot, 0deg));
+        transform: translateY(0) rotate(var(--rot));
     }
 
 }
@@ -292,14 +304,30 @@ header p {
 
     min-height: 260px;
 
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    --card-y: 0px;
+    transform: translateY(var(--card-y)) scale(1);
+    transition:   
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        translateY 1s ease,
+        opacity 1s ease;
 }
 
 .card:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(calc(var(--card-y) - 8px)) scale(1.02);
     box-shadow:
         0 18px 40px rgba(0,0,0,0.25),
         inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.fade-in {
+    opacity: 0;
+    --card-y: 40px;
+}
+
+.fade-in.show {
+    opacity: 1;
+    --card-y: 0px;
 }
 
 .card img {
@@ -323,7 +351,7 @@ header p {
 
 .full-card-content {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
     gap: 40px;
     height: 100%;
@@ -333,7 +361,7 @@ header p {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    max-width: 80%;
+    flex: 1;
     height: 100%;
 }
 
@@ -348,7 +376,6 @@ header p {
     align-items: left;
     justify-content: center;
 
-    width: 10%;
     padding: 10px 22px;
 
     border-radius: 999px;
@@ -371,8 +398,8 @@ header p {
 }
 
 .btn-bold:hover {
-    transform: translateY(2px);
-    box-shadow: 0 8px 13px rgba(0,0,0,0.20);
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.20);
 }
 
 .btn-light, .btn-light-white {
@@ -405,12 +432,8 @@ header p {
 }
 
 .btn-light:hover, .btn-light-white:hover {
-    background: linear-gradient(
-        135deg,
-        var(--wamdo-bold-bright),
-        var(--wamdo-bold-deep)
-    );
-    color: white;
+    background-color: white;
+    color: var(--wamdo-bold-deep);
     box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     transform: translateY(-2px);
 }
@@ -422,6 +445,7 @@ header p {
 
     display: inline-flex;
     padding: 10px 22px;
+    max-width: 85px;
 }
 
 .logo {
@@ -436,6 +460,10 @@ header p {
 .image {
     background-color: gray;
     border-radius: 40px;
+}
+
+.product-image {
+    height: 100px;
 }
 
 .app-icons {
@@ -473,29 +501,52 @@ header p {
     border-radius: 25px;
 }
 
-.grid-large {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
+#contact {
+    text-align: center;
+}
 
-    width: min(1300px, 90%);
-    margin: 0 auto;
+.contact-text {
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.contact-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.contact-links a:hover {
+    opacity: 0.7;
+    transform: translateY(-2px);
 }
 
 footer {
-    background-color: #0e0000;
-    color: gray;
+    background-color: #0e000010;
+    border-top: 1px solid #FFFFFF20;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
     bottom: 0;
     left: 0;
     right: 0;
 }
 
 footer p {
-    color: gray;
+    color: #FFFFFF70;
 }
 
 hr {
