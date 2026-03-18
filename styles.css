@@ -22,6 +22,12 @@
 
     --container-width: 1250px;
     --container-padding: 24px;
+
+    --radius-sm: 12px;
+    --radius-md: 18px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    --radius-xxl: 50px;
 }
 
 
@@ -93,7 +99,7 @@ nav {
     height: 60px;
 
     background: white;
-    border-radius: 100px;
+    border-radius: var(--radius-xl);
     border: 1px solid rgba(255,255,255,0.4);
 
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -146,7 +152,7 @@ section h2 {
 }
 
 header {
-    min-height: 100vh;
+    min-height: 96vh;
 
     position: relative;
     overflow: hidden;
@@ -173,12 +179,19 @@ header p {
     z-index: 1;
 }
 
-.float-icon {
+.icon {
     position: absolute;
     width: 70px;
     opacity: 0.85;
-
-    animation: float 6s ease-in-out infinite;
+    background-color: #FFFFFF;
+    color: black;
+    padding: 15px 10px;
+    border-radius: var(--radius-md);
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.05),
+        inset 0 1px 0 rgba(255,255,255,0.03);
+    transform: translateY(0) rotate(var(--rot));
+    transition: all 0.5s;
 }
 
 .hero-icons {
@@ -194,70 +207,52 @@ header p {
 }
 
 .icon1 {
-    top: 20%;
-    left: 15%;
+    top: 18%;
+    left: 17%;
     --rot: -12deg;
 }
 
 .icon2 {
-    top: 65%;
-    left: 20%;
+    top: 40%;
+    left: 7%;
     --rot: 8deg;
 }
 
 .icon3 {
-    top: 30%;
-    right: 18%;
+    top: 38%;
+    right: 13%;
     --rot: -6deg;
 }
 
 .icon4 {
-    top: 70%;
-    right: 22%;
+    top: 77%;
+    right: 30%;
     --rot: 10deg;
 }
 
 .icon5 {
-    top: 20%;
-    left: 60%;
+    top: 17%;
+    right: 21%;
     --rot: -4deg;
 }
 
 .icon6 {
     top: 80%;
-    left: 50%;
+    left: 30%;
     --rot: -7deg;
 }
 
 .icon7 {
-    top: 85%;
-    left: 30%;
+    top: 65%;
+    left: 15%;
     --rot: 4deg;
 }
 
 .icon8 {
-    top: 50%;
-    left: 90%;
-    --rot: -2deg;
+    top: 62%;
+    right: 12%;
+    --rot: 4deg;
 }
-
-@keyframes float {
-
-    0% {
-        transform: translateY(0) rotate(var(--rot));
-    }
-
-    50% {
-        transform: translateY(-12px) rotate(var(--rot));
-    }
-
-    100% {
-        transform: translateY(0) rotate(var(--rot));
-    }
-
-}
-
-
 
 
 
@@ -289,15 +284,17 @@ header p {
     background: rgba(255,255,255,0.95);
     color: black;
 
-    border-radius: 35px;
+    border-radius: var(--radius-xl);
     padding: 2rem;
 
     border: 1px solid rgba(255,255,255,0.6);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(2px);
     box-shadow:
-        0 10px 30px rgba(0,0,0,0.15),
-        inset 0 1px 0 rgba(255,255,255,0.6);
-
+        0 7px 25px rgba(0,0,0,0.10),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    /*box-shadow:
+        0 4px 15px rgba(0,0,0,0.05),
+        inset 0 1px 0 rgba(255,255,255,0.03);*/
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -314,9 +311,9 @@ header p {
 }
 
 .card:hover {
-    transform: translateY(calc(var(--card-y) - 8px)) scale(1.02);
+    transform: translateY(calc(var(--card-y) - 4px)) scale(1.01);
     box-shadow:
-        0 18px 40px rgba(0,0,0,0.25),
+        0 7px 25px rgba(0,0,0,0.15),
         inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
@@ -392,14 +389,14 @@ header p {
 
     color: white;
 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.10);
 
     transition: all 0.25s ease;
 }
 
 .btn-bold:hover {
     transform: translateY(-2px) scale(1.01);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.20);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.20);
 }
 
 .btn-light, .btn-light-white {
@@ -434,7 +431,7 @@ header p {
 .btn-light:hover, .btn-light-white:hover {
     background-color: white;
     color: var(--wamdo-bold-deep);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
     transform: translateY(-2px);
 }
 
@@ -459,7 +456,7 @@ header p {
 
 .image {
     background-color: gray;
-    border-radius: 40px;
+    border-radius: var(--radius-xl);
 }
 
 .product-image {
@@ -530,10 +527,10 @@ header p {
 }
 
 footer {
-    background-color: #0e000010;
-    border-top: 1px solid #FFFFFF20;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    /*background-color: #0e000010;
+    border-top: 1px solid #FFFFFF20;*/
+    border-top-left-radius: var(--radius-md);
+    border-top-right-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -543,6 +540,10 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+footer img {
+    opacity: 0.5;
 }
 
 footer p {
@@ -555,4 +556,14 @@ hr {
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+
+main {
+    width: 96%;
+    background: #FFFFFF99;
+    align-self: center;
+    justify-self: center;
+    border-top-left-radius: var(--radius-xxl);
+    border-top-right-radius: var(--radius-xxl);
 }
