@@ -102,7 +102,7 @@ nav {
     border-radius: var(--radius-xl);
     border: 1px solid rgba(255,255,255,0.4);
 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 13px rgba(0,0,0,0.17);
 
     display: flex;
     align-items: center;
@@ -144,6 +144,7 @@ nav ul li:hover {
 
 section {
     padding-block: var(--space-xl);
+    color: rgba(0, 0, 0, 0.75);
 }
 
 section h2 {
@@ -281,7 +282,7 @@ header p {
 }
 
 .card {
-    background: rgba(255,255,255,0.95);
+    background: rgba(255, 255, 255, 0.75);
     color: black;
 
     border-radius: var(--radius-xl);
@@ -411,7 +412,7 @@ header p {
     font-weight: 600;
     font-size: 15px;
 
-    transition: all 0.25s ease;
+    transition: all 0.15s;
 }
 
 .btn-light {
@@ -430,9 +431,8 @@ header p {
 
 .btn-light:hover, .btn-light-white:hover {
     background-color: white;
-    color: var(--wamdo-bold-deep);
-    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
-    transform: translateY(-2px);
+    color: var(--wamdo-bold-bright);
+    /*transform: translateY(-2px);*/
 }
 
 .link-bold {
@@ -516,7 +516,7 @@ header p {
 
 .contact-links a {
     text-decoration: none;
-    color: white;
+    color: rgb(0, 0, 0, 0.8);
     font-weight: 500;
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
@@ -527,27 +527,25 @@ header p {
 }
 
 footer {
-    /*background-color: #0e000010;
-    border-top: 1px solid #FFFFFF20;*/
-    border-top-left-radius: var(--radius-md);
-    border-top-right-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px;
-    padding-left: 8px;
-    padding-right: 8px;
+    width: 100%;
     bottom: 0;
     left: 0;
     right: 0;
 }
 
+.footer-content {
+    width: 90%;
+}
+
 footer img {
-    opacity: 0.5;
+    opacity: 0.35;
 }
 
 footer p {
-    color: #FFFFFF70;
+    color: rgba(0, 0, 0, 0.35);
 }
 
 hr {
@@ -561,7 +559,7 @@ hr {
 
 main {
     width: 96%;
-    background: #FFFFFF99;
+    background: rgba(255, 255, 255, 0.9);
     align-self: center;
     justify-self: center;
     border-top-left-radius: var(--radius-xxl);
