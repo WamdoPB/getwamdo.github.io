@@ -27,14 +27,14 @@
     <header id="home">
 
         <div class="hero-icons">
-            <img src="icons/keyboard.png" class="icon icon1 fadein" alt="keyboard">
-            <img src="icons/clock.png" class="icon icon2 fadein" alt="clock">
-            <img src="icons/notes.png" class="icon icon3 fadein" alt="notes">
-            <img src="icons/files.png" class="icon icon4 fadein" alt="files">
-            <img src="icons/calendar.png" class="icon icon5 fadein" alt="calendar">
-            <img src="icons/voice.png" class="icon icon6 fadein" alt="voice">
-            <img src="icons/contact.png" class="icon icon7 fadein" alt="contact">
-            <img src="icons/gallery.png" class="icon icon8 fadein" alt="gallery">
+            <img src="icons/keyboard.png" class="icon icon1 fade-in" alt="keyboard">
+            <img src="icons/clock.png" class="icon icon2 fade-in" alt="clock">
+            <img src="icons/notes.png" class="icon icon3 fade-in" alt="notes">
+            <img src="icons/files.png" class="icon icon4 fade-in" alt="files">
+            <img src="icons/calendar.png" class="icon icon5 fade-in" alt="calendar">
+            <img src="icons/voice.png" class="icon icon6 fade-in" alt="voice">
+            <img src="icons/contact.png" class="icon icon7 fade-in" alt="contact">
+            <img src="icons/gallery.png" class="icon icon8 fade-in" alt="gallery">
         </div>
 
         <div class="hero-content">
@@ -44,22 +44,22 @@
         </div>
     </header>
     
-    <main class="not-hero">
+    <main>
 
         <section id="about">
             <div class="container">
                 <h2>About us</h2>
                 <div class="grid">
-                    <div class="fadein card">
+                    <div class="fade-in card">
                         <h3>Our vision</h3>
                         <p>We imagine a future where personal technology is understandable, dependable, and genuinely serves its users. Wamdo aims to build tools people can trust, tools that stay out of the way, respect privacy, and remain open for anyone to inspect.</p>
                     </div>
-                    <div class="fadein card">
+                    <div class="fade-in card">
                         <h3>Our mission</h3>
                         <p>Wamdo strives to provide trustworthy tech solutions without hidden catches. Our current and future open-source digital and physical products and services are designed with transparency, reliability, and user-centric performance in mind.</p>
                     </div>
                 </div>
-                <a href="about.html" class="btn-light-white">More about us</a>
+                <a href="about.html" class="btn-light-surface">More about us</a>
             </div>
         </section>
 
@@ -67,7 +67,7 @@
             <div class="container">
                 <h2>Products</h2>
                 <div class="grid">
-                    <div class="fadein card">
+                    <div class="fade-in card">
                         <h3>Mobile Apps</h3>
                         <p>Discover our wide range of simple, fast, and lightweight utility apps for Android!</p>
                         <div class="app-icons">
@@ -80,13 +80,13 @@
                         </div>
                         <a class="btn-bold" href="apps.html">Browse</a>
                     </div>
-                    <div class="fadein card">
+                    <div class="fade-in card">
                         <h3>Wamdo Watch 1</h3>
                         <p>Wamdo Watch 1 is a fast, reliable, seamless, and trustworthy pick running the latest WandOS Mini 1 operating system.</p>
                         <img class="product-image" src="img/OS.png" alt="">
                         <a class="btn-bold" href="watch.html">Discover</a>
                     </div>
-                    <div class="fadein card full-card">
+                    <div class="fade-in card full-card">
                         <div class="full-card-content">
                             <div class="full-card-left">
                                 <h3>What to expect from us later</h3>
@@ -132,18 +132,25 @@
     </main>
 
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        const observer = new IntersectionObserver((entries, index) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
+                    const el = entry.target;
+
+                    el.style.transitionDelay = `${index * 0.08}s`;
+                    el.classList.add('show');
+
+                    setTimeout(() => {
+                        el.style.transitionDelay = '0s';
+                    }, 700);
                 }
             });
         });
 
-        document.querySelectorAll('.fadein').forEach(fadein => {
-            fadein.classList.add('fade-in');
-            observer.observe(fadein);
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
         });
+
     </script>
 </body>
 </html>
